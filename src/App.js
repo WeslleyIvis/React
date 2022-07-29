@@ -1,29 +1,19 @@
 import React from 'react';
-import Header from './Header';
-import Home from './Home';
-import Produtos from './Produtos';
-
-const { pathname } = window.location;
-console.log(pathname);
+import ButtonModal from './ButtonModal';
+import Modal from './Modal';
 
 const App = () => {
-  if (pathname === '/Produtos') {
-    return (
-      <>
-        <Header />
-        <Produtos />
-      </>
-    );
-  } else {
-    return (
-      <>
-        <Header />
-        <Home />
-      </>
-    );
-  }
+  const [modal, setModal] = React.useState(false);
 
-
+  return (
+    <>
+      <div>
+        <div>{modal ? 'Modal aberto' : ''}</div>
+        <ButtonModal setModal={setModal} />
+        <Modal setModal={setModal} modal={modal} />
+      </div>
+    </>
+  );
 };
 
 export default App;
