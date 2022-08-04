@@ -1,33 +1,24 @@
 import React from 'react';
-import Produto from './Produto';
 
 const App = () => {
-  const [dados, setDados] = React.useState(null);
-  const [carregando, setCarregando] = React.useState(null);
+  const [carrinho, setCarrinho] = React.useState(0);
+  const [notificacao, setNotificacao] = React.useState(null);
+  const timeoutRef = React.useRef();
 
-  async function handleClick(event) {
-    setCarregando(true);
-    const response = await fetch(
-      `https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`,
-    );
-    const json = await response.json();
-    setDados(json);
-    setCarregando(false);
+  function handleClick() {
+    setCarrinho(carrinho + 1);
+    setNotificacao('Item adicionado');
+
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setNotificacao(null);
+    }, 1000);
   }
 
   return (
     <div>
-      <button style={{ margin: '.5em' }} onClick={handleClick}>
-        notebook
-      </button>
-      <button style={{ margin: '.5em' }} onClick={handleClick}>
-        smartphone
-      </button>
-      <button style={{ margin: '.5em' }} onClick={handleClick}>
-        tablet
-      </button>
-      {carregando && <p>Carregando...</p>}
-      {!carregando && dados && <Produto dados={dados} />}
+      <p>{notificacao}</p>
+      <button onClick={handleClick}>Adicionar ao carrinho {carrinho}</button>
     </div>
   );
 };
