@@ -1,38 +1,72 @@
 import React from 'react';
 
-const set1 = new Set();
-const set2 = new Set();
-
-const Produtos = () => {
-  const func1 = () => {
-    console.log('Test');
-  };
-
-  const func2 = React.useCallback(() => {
-    console.log('Teste');
-  }, []);
-
-  set1.add(func1);
-  set2.add(func2);
-
-  console.log('1 ', set1);
-  console.log('2 ', set2);
-
-  return (
-    <div>
-      <p onClick={func1}>Produto 1</p>
-      <p onClick={func2}>Produto 2</p>
-    </div>
-  );
-};
-
 const App = () => {
   const [contar, setContar] = React.useState(0);
 
+  function randleClick() {
+    setContar(contar + 1);
+  }
+
+  const produtos = [
+    {
+      id: 1,
+      bgColor: '#8de799',
+      produto: 'Notbook',
+      marca: 'Samsung',
+      tela: '25 Polegadas',
+      processador: 'i7',
+      placaVideo: 'rtx 3080',
+      memoria: '32gb',
+      img: 'https://images-americanas.b2w.io/spacey/acom/2022/07/20/notebook-i3-67245203da3f.png',
+    },
+    {
+      id: 2,
+      bgColor: '#63baec',
+      produto: 'celular',
+      marca: 'Xiaomi',
+      tela: '18 Polegadas',
+      processador: 'SnapDragon',
+      memoria: '8gb',
+      cores: ['#ffd045', '#d4394b', '#f37c59'],
+      img: 'https://www.notebookcheck.info/uploads/tx_nbc2/Xiaomi12.JPG',
+    },
+  ];
+
   return (
     <div>
-      <Produtos />
-      <button onClick={() => setContar(contar + 1)}>{contar}</button>;
+      Produtos:{' '}
+      {produtos.map((produto) => (
+        <div
+          key={produto.id}
+          style={{
+            padding: '1em 1em 5em',
+            margin: '30px 0',
+            background: produto.bgColor,
+            color: 'white',
+          }}
+        >
+          <h2>{produto.produto}</h2>
+          <ul
+            style={{
+              color: '#414141',
+              listStyle: 'none',
+            }}
+          >
+            <li>{produto.marca}</li>
+            <li>{produto.tela}</li>
+            <li>{produto.memoria}</li>
+            <li>{produto.processador}</li>
+            <li>
+              <img
+                style={{ width: '250px' }}
+                src={produto.img}
+                alt={produto.img}
+              />
+            </li>
+          </ul>
+          <button onClick={randleClick}>{contar}</button>
+        </div>
+      ))}
     </div>
   );
 };
