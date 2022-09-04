@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .sub-content {
+            background: burlywood;
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+
+        img {
+            width: 500px;
+            margin: 20px 0;
+        }
+
+        .teste {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            max-width: 960px;
+
+            margin: 0 auto;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        .teste div {
+            background: rgb(241, 191, 128);
+            display: grid;
+            margin: 30px;
+
+        }
+
+        .teste div p {
+            font-size: 1.1em;
+        }
+
+        .teste div img {
+            width: 250px;
+            justify-self: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="content">
+
+    </section>
+
+    <script>
+
+        const items = [
+            {
+                nome: 'Notebook',
+                valor: 'R$ 2300',
+                processador: 'SnapDrago',
+                ram: '8gb ram',
+                memoria: '128gb',
+                cores: ['#EAF757', '#D4904A', '#EB5EC3', '#4A62D4', '#72F5B4'],
+                image: 'https://imgs.extra.com.br/55035218/1xg.jpg?imwidth=500',
+            },
+            {
+                nome: 'Ipad',
+                valor: 'R$ 4230,99',
+                processador: 'SnapDrago',
+                ram: '8gb ram',
+                memoria: '128gb',
+                cores: ['#EAF757', '#D4904A', '#EB5EC3', '#4A62D4', '#72F5B4'],
+                image: 'https://a-static.mlcdn.com.br/800x560/apple-ipad-102-wi-fi-64gb-cinza-espacial/magazineluiza/233028900/89d7b57bcb2720dc03c124cc996271c2.jpg',
+            },
+            {
+                nome: 'Aple watch',
+                valor: 'R$ 6499,99',
+                processador: 'Pentium',
+                ram: '8gb ram',
+                memoria: '128gb',
+                cores: ['#EAF757', '#D4904A', '#EB5EC3', '#4A62D4', '#72F5B4'],
+                image: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/42-alu-silver-sport-white-nc-s3-grid_GEO_BR?wid=540&hei=550&fmt=jpeg&qlt=90&.v=1594259803000',
+            },
+        ]
+
+        class creteNodeElement {
+            constructor(content, nodeName, dados, atribute = '', atributeValue = '', nodeElements = '') {
+                this.content = document.querySelector(content);
+                this.nodeName = nodeName;
+                this.dados = dados;
+                this.atribute = atribute;
+                this.atributeValue = atributeValue;
+                this.nodeElements = nodeElements;
+            }
+
+            createElement(nodeName, elementFather, dados = '', atribute = '', atributeValue = '') {
+                const nodeElement = document.createElement(nodeName);
+
+                console.log(nodeName, elementFather, dados, atribute, atributeValue,)
+
+                if (atribute || atribute && atributeValue) {
+                    nodeElement.setAttribute(atribute, atributeValue);
+                }
+                if (elementFather && nodeElement) {
+                    elementFather.appendChild(nodeElement)
+                }
+
+                dados.map(({ nome, valor, processador, ram, memoria, cores, image }) => {
+                    const div = document.createElement(this.nodeElements.div);
+                    const h1 = document.createElement(this.nodeElements.h1);
+                    const img = document.createElement(this.nodeElements.img);
+                    const pValor = document.createElement(this.nodeElements.p);
+                    const pRam = document.createElement(this.nodeElements.p);
+                    const pMemoria = document.createElement(this.nodeElements.p);
+
+
+                    h1.innerText = nome
+                    img.setAttribute('src', image)
+                    pValor.innerText = valor
+                    pRam.innerText = ram
+                    pMemoria.innerText = memoria
+
+                    nodeElement.appendChild(div)
+                    div.appendChild(h1)
+                    div.appendChild(img)
+                    div.appendChild(pValor)
+                    div.appendChild(pRam)
+                    div.appendChild(pMemoria)
+                })
+            }
+
+            createContent() {
+
+                this.createElement(this.nodeName, this.content, this.dados, this.atribute, this.atributeValue)
+            }
+        }
+
+        const teste = new creteNodeElement('.content', 'div', items, 'class', 'teste', {
+            div: 'div',
+            h1: 'h1',
+            img: 'img',
+            p: 'p'
+        })
+        teste.createContent()
+
+    </script>
+</body>
+
+</html>
