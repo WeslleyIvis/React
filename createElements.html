@@ -91,67 +91,96 @@
                 cores: ['#EAF757', '#D4904A', '#EB5EC3', '#4A62D4', '#72F5B4'],
                 image: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/42-alu-silver-sport-white-nc-s3-grid_GEO_BR?wid=540&hei=550&fmt=jpeg&qlt=90&.v=1594259803000',
             },
+            {
+                nome: 'Aple watch',
+                valor: 'R$ 6499,99',
+                processador: 'Pentium',
+                ram: '8gb ram',
+                memoria: '128gb',
+                cores: ['#EAF757', '#D4904A', '#EB5EC3', '#4A62D4', '#72F5B4'],
+                image: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/42-alu-silver-sport-white-nc-s3-grid_GEO_BR?wid=540&hei=550&fmt=jpeg&qlt=90&.v=1594259803000',
+            },
+            {
+                nome: 'Aple watch',
+                valor: 'R$ 6499,99',
+                processador: 'Pentium',
+                ram: '8gb ram',
+                memoria: '128gb',
+                cores: ['#EAF757', '#D4904A', '#EB5EC3', '#4A62D4', '#72F5B4'],
+                image: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/42-alu-silver-sport-white-nc-s3-grid_GEO_BR?wid=540&hei=550&fmt=jpeg&qlt=90&.v=1594259803000',
+            },
+            {
+                nome: 'Aple watch',
+                valor: 'R$ 6499,99',
+                processador: 'Pentium',
+                ram: '8gb ram',
+                memoria: '128gb',
+                cores: ['#EAF757', '#D4904A', '#EB5EC3', '#4A62D4', '#72F5B4'],
+                image: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/42-alu-silver-sport-white-nc-s3-grid_GEO_BR?wid=540&hei=550&fmt=jpeg&qlt=90&.v=1594259803000',
+            },
+            {
+                nome: 'Aple watch',
+                valor: 'R$ 6499,99',
+                processador: 'Pentium',
+                ram: '8gb ram',
+                memoria: '128gb',
+                cores: ['#EAF757', '#D4904A', '#EB5EC3', '#4A62D4', '#72F5B4'],
+                image: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/42-alu-silver-sport-white-nc-s3-grid_GEO_BR?wid=540&hei=550&fmt=jpeg&qlt=90&.v=1594259803000',
+            },
         ]
 
         class creteNodeElement {
-            constructor(content, nodeName, dados, atribute = '', atributeValue = '', nodeElements = '') {
+            constructor(content, nodeName, dados, atribute = '', atributeValue = '', nodeElements = '', nodeSection = 'div') {
                 this.content = document.querySelector(content);
                 this.nodeName = nodeName;
                 this.dados = dados;
                 this.atribute = atribute;
                 this.atributeValue = atributeValue;
                 this.nodeElements = nodeElements;
+                this.nodeSection = nodeSection
             }
 
             createElement(nodeName, elementFather, dados = '', atribute = '', atributeValue = '') {
                 const nodeElement = document.createElement(nodeName);
-
-                console.log(nodeName, elementFather, dados, atribute, atributeValue,)
-
                 if (atribute || atribute && atributeValue) {
                     nodeElement.setAttribute(atribute, atributeValue);
                 }
                 if (elementFather && nodeElement) {
                     elementFather.appendChild(nodeElement)
                 }
+                this.createDadosContent(this.dados, nodeElement)
+            }
 
+            createDadosContent(dados, content) {
+                const nodeList = []
                 dados.map(({ nome, valor, processador, ram, memoria, cores, image }) => {
-                    const div = document.createElement(this.nodeElements.div);
-                    const h1 = document.createElement(this.nodeElements.h1);
-                    const img = document.createElement(this.nodeElements.img);
-                    const pValor = document.createElement(this.nodeElements.p);
-                    const pRam = document.createElement(this.nodeElements.p);
-                    const pMemoria = document.createElement(this.nodeElements.p);
-
-
-                    h1.innerText = nome
-                    img.setAttribute('src', image)
-                    pValor.innerText = valor
-                    pRam.innerText = ram
-                    pMemoria.innerText = memoria
-
-                    nodeElement.appendChild(div)
-                    div.appendChild(h1)
-                    div.appendChild(img)
-                    div.appendChild(pValor)
-                    div.appendChild(pRam)
-                    div.appendChild(pMemoria)
+                    const elements = `
+                                        <h1 alt="${nome}">${nome}</h1>
+                                        <img src="${image}" alt="">
+                                        <div>
+                                            <p>${valor}</p>
+                                            <p>${processador}</p>
+                                            <p>${ram}</p>
+                                            <p>${memoria}</p>
+                                        </div>                                                                           
+                                    `
+                    nodeList.push(elements)
                 })
+                for (let i = 0; i < nodeList.length; i++) {
+                    const appendNode = document.createElement(this.nodeSection)
+                    appendNode.innerHTML = nodeList[i]
+                    content.appendChild(appendNode)
+                }
             }
 
             createContent() {
-
                 this.createElement(this.nodeName, this.content, this.dados, this.atribute, this.atributeValue)
             }
         }
 
-        const teste = new creteNodeElement('.content', 'div', items, 'class', 'teste', {
-            div: 'div',
-            h1: 'h1',
-            img: 'img',
-            p: 'p'
-        })
+        const teste = new creteNodeElement('.content', 'div', items, 'class', 'teste')
         teste.createContent()
+
 
     </script>
 </body>
