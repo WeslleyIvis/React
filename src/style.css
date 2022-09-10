@@ -1,0 +1,13 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: rgb(240 240 240);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+.teste {
+    font-weight: bold;
+}
+    

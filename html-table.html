@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: calc(5*150px);
+            display: grid;
+            grid-template-columns: repeat(5, 150px);
+            background-color: rgb(240 240 240);
+            text-align: center;
+        }
+
+        .content h4,
+        p {
+            padding: 7px;
+            height: 40px;
+            align-self: center;
+        }
+
+        .period-width {
+            width: 100px;
+        }
+
+        .period {
+            background-color: rgb(224 224 224);
+            margin-top: 5px;
+            border-top: 2px solid rgb(168 168 168);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section class="content">
+        <div class="font-bold period-width">
+            <h4 class="period">Period</h4>
+            <p>2016Q1</p>
+            <p>2016Q2</p>
+            <p>2016Q3</p>
+            <p>2016Q4</p>
+            <p>2017Q1</p>
+        </div>
+        <div>
+            <h4>Android</h4>
+            <p>83.4%</p>
+            <p>87.6%</p>
+            <p>86.8%</p>
+            <p>81.4%</p>
+            <p>85.0%</p>
+        </div>
+        <div>
+            <h4>iOS</h4>
+            <p>15.4%</p>
+            <p>11.6%</p>
+            <p>12.8%</p>
+            <p>18.4%</p>
+            <p>14.0%</p>
+        </div>
+        <div>
+            <h4>Windows Phone</h4>
+            <p>0.8%</p>
+            <p>0.4%</p>
+            <p>0.3%</p>
+            <p>0.2%</p>
+            <p>0.1%</p>
+        </div>
+        <div>
+            <h4>Others</h4>
+            <p>0.4%</p>
+            <p>0.3%</p>
+            <p>0.4%</p>
+            <p>0.2%</p>
+            <p>0.1%</p>
+        </div>
+    </section>
+
+    <script>
+
+    </script>
+
+</body>
+
+</html>
