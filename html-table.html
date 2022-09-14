@@ -8,6 +8,21 @@
     <title>Table</title>
 
     <style>
+        :root {
+            --bg-content: rgb(240 240 240);
+            --bg--period: rgb(224 224 224);
+            --border-period: 2px solid rgb(168 168 168);
+            --bg-android: #e1f2c3;
+            --border-android: 2px solid #80a048;
+            --bg-ios: #c6d8f1;
+            --border-ios: 2px solid #4068a0;
+            --bg-windows: #dfd5ed;
+            --border-windows: 2px solid #685088;
+            --bg-others: #f1dcc9;
+            --border-others: 2px solid #d88030;
+            --margin-top: .5em;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,15 +30,23 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        body {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1em;
+        }
+
         .font-bold {
             font-weight: bold;
         }
 
         .content {
-            max-width: calc(5*150px);
+            margin: 3em 20px;
+            max-width: calc(4*150px + 100px);
+            height: 248px;
             display: grid;
-            grid-template-columns: repeat(5, 150px);
-            background-color: rgb(240 240 240);
+            grid-template-columns: 100px repeat(4, 150px);
+            background-color: var(--bg-content);
             text-align: center;
         }
 
@@ -39,9 +62,120 @@
         }
 
         .period {
-            background-color: rgb(224 224 224);
-            margin-top: 5px;
-            border-top: 2px solid rgb(168 168 168);
+            background-color: var(--bg--period);
+            margin-top: var(--margin-top);
+            border-top: var(--border-period);
+        }
+
+        .android {
+            background-color: var(--bg-android);
+            border-top: var(--border-android);
+            margin-top: var(--margin-top);
+        }
+
+        .ios {
+            background-color: var(--bg-ios);
+            border-top: var(--border-ios);
+            margin-top: var(--margin-top);
+        }
+
+        .windows {
+            background-color: var(--bg-windows);
+            border-top: var(--border-windows);
+            margin-top: var(--margin-top);
+        }
+
+        .others {
+            background-color: var(--bg-others);
+            border-top: var(--border-others);
+            margin-top: var(--margin-top);
+        }
+
+        /* 
+        oooooooooooo                                               
+        `888'     `8                                               
+        888          .ooooo.  oooo d8b ooo. .oo.  .oo.    .oooo.o 
+        888oooo8    d88' `88b `888""8P `888P"Y88bP"Y88b  d88(  "8 
+        888    "    888   888  888      888   888   888  `"Y88b.  
+        888         888   888  888      888   888   888  o.  )88b 
+        o888o        `Y8bod8P' d888b    o888o o888o o888o 8""888P' 
+        */
+
+        .forms {
+            display: flex;
+            margin-top: 50px;
+            background-image: linear-gradient(180deg, rgb(123, 174, 250) 0%, rgb(63, 63, 158) 100%);
+            width: 900px;
+            gap: 30px;
+            box-shadow: 1px 2px 30px rgb(0, 0, 0, 0.40);
+        }
+
+        .left-block {
+            background-image: url('https://images.pexels.com/photos/2033343/pexels-photo-2033343.jpeg?auto=compress&cs=tinysrgb&w=2000&h=1550&dpr=1');
+            background-size: cover;
+            width: 50%;
+            animation: 20s animation-image forwards;
+        }
+
+        @keyframes animation-image {
+            0% {
+                filter: hue-rotate(0deg) blur(0.1px);
+
+            }
+
+            100% {
+                filter: hue-rotate(360deg) blur(0);
+            }
+        }
+
+        .forms form {
+            display: grid;
+            margin: 0 auto;
+            padding: 40px 40px 40px 40px;
+        }
+
+        .forms form div {
+            margin: 10px 0;
+        }
+
+        .forms form div:first-child p {
+            margin: 7px 0 20px 0;
+            padding: 7px 0 !important;
+            height: 100%;
+        }
+
+        .forms label {
+            color: rgb(255, 255, 255);
+            font-size: 1.1em;
+            font-weight: 500;
+
+        }
+
+        .forms form p,
+        h2 {
+            color: white;
+        }
+
+        .forms form input,
+        textarea,
+        select {
+            margin: .5em 0;
+            width: 100%;
+            border: 1px solid #0744635b;
+            outline: bi;
+            background-color: #ffffff;
+            padding: 5px;
+        }
+
+        .button-forms {
+            width: 150px;
+            border: none;
+            font-weight: bold;
+            color: white;
+            background-color: rgb(243, 126, 31);
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 
@@ -59,7 +193,7 @@
             <p>2017Q1</p>
         </div>
         <div>
-            <h4>Android</h4>
+            <h4 class="android">Android</h4>
             <p>83.4%</p>
             <p>87.6%</p>
             <p>86.8%</p>
@@ -67,7 +201,7 @@
             <p>85.0%</p>
         </div>
         <div>
-            <h4>iOS</h4>
+            <h4 class="ios">iOS</h4>
             <p>15.4%</p>
             <p>11.6%</p>
             <p>12.8%</p>
@@ -75,7 +209,7 @@
             <p>14.0%</p>
         </div>
         <div>
-            <h4>Windows Phone</h4>
+            <h4 class="windows">Windows Phone</h4>
             <p>0.8%</p>
             <p>0.4%</p>
             <p>0.3%</p>
@@ -83,7 +217,7 @@
             <p>0.1%</p>
         </div>
         <div>
-            <h4>Others</h4>
+            <h4 class="others">Others</h4>
             <p>0.4%</p>
             <p>0.3%</p>
             <p>0.4%</p>
@@ -92,7 +226,77 @@
         </div>
     </section>
 
+    <section class="forms">
+        <div class="left-block">
+
+        </div>
+
+        <form action="POST">
+            <div>
+                <h2>Lorem</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quasi</p>
+            </div>
+
+            <div>
+                <label for="nome"> Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Nome completo">
+            </div>
+            <div>
+                <label for="email"> Email</label>
+                <input type="email" name="email" id="email" placeholder="E-mail">
+            </div>
+            <div>
+                <label for="option"> Assunto</label>
+                <select title="assunto" name="option" class="entrada">
+                    <option value="">
+                    <option value="Dúvida do produto">Dúvida do produto</option>
+                    <option value="Atraso na entrega">Atraso na entrega</option>
+                </select>
+
+            </div>
+            <div>
+                <label for="mensagem"> Menssagem</label>
+                <textarea name="mensagem" id="mensagem" class="textarea" rows="7" placeholder="Sua mensagem"></textarea>
+            </div>
+            <div>
+                <button type="button" value="Enviar" class="button-forms">Enviar</button>
+            </div>
+        </form>
+
+    </section>
+
+
+    
     <script>
+
+//       n3 <- tresAlgorismos % 10;
+//       aux <- tresAlgorismos / 10;
+//       n2 <- aux % 10;
+//       aux <- aux / 10;
+//       n1 <- aux % 10;
+//       aux =  n1 +  n2 * 2 +  n3 * 6 ;
+//       n4 <- aux % 9;
+//       quadtroAlgorismosD = tresAlgorismos * 10 + n4
+
+        const tresD = 324
+
+        const n3 = tresD % 10
+        console.log(`${n3} = n3`)
+        let aux = tresD / 10;
+        console.log(`${aux} = aux`)
+        const n2 = aux % 10;
+        console.log(`${n2} = n2`)
+        aux = aux / 10;
+        console.log(`${aux} = aux`)
+        const n1 = aux % 10;
+        console.log(`${n1} = n1`)
+        aux = n1 + n2 * 2 + (n3 * 6);
+        console.log(`${aux} = aux`)
+        const n4 = aux % 9;
+        console.log(`${n4} = n4`);
+        const valorTotal = tresD * 10 + n4;
+        console.log(valorTotal)
+
 
     </script>
 
