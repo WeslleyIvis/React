@@ -33,7 +33,6 @@
         body {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 1em;
         }
 
         .font-bold {
@@ -94,16 +93,16 @@
         /* 
         oooooooooooo                                               
         `888'     `8                                               
-        888          .ooooo.  oooo d8b ooo. .oo.  .oo.    .oooo.o 
-        888oooo8    d88' `88b `888""8P `888P"Y88bP"Y88b  d88(  "8 
-        888    "    888   888  888      888   888   888  `"Y88b.  
-        888         888   888  888      888   888   888  o.  )88b 
+        888           .ooooo.   oooo d8b ooo. .oo.  .oo.    .oooo.o 
+        888oooo8     d88' `88b `888""8P `888P"Y88bP"Y88b  d88(  "8 
+        888    "     888   888  888      888   888   888  `"Y88b.  
+        888          888   888  888      888   888   888  o.  )88b 
         o888o        `Y8bod8P' d888b    o888o o888o o888o 8""888P' 
         */
 
         .forms {
             display: flex;
-            margin-top: 50px;
+            margin: 50px 0 0 50px;
             background-image: linear-gradient(180deg, rgb(123, 174, 250) 0%, rgb(63, 63, 158) 100%);
             width: 900px;
             gap: 30px;
@@ -148,7 +147,6 @@
             color: rgb(255, 255, 255);
             font-size: 1.1em;
             font-weight: 500;
-
         }
 
         .forms form p,
@@ -182,6 +180,45 @@
 </head>
 
 <body>
+
+    <section class="forms">
+        <div class="left-block">
+
+        </div>
+
+        <form action="POST">
+            <div>
+                <h2>Lorem</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quasi</p>
+            </div>
+
+            <div>
+                <label for="nome"> Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Nome completo">
+            </div>
+            <div>
+                <label for="email"> Email</label>
+                <input type="email" name="email" id="email" placeholder="E-mail">
+            </div>
+            <div>
+                <label for="option"> Assunto</label>
+                <select title="assunto" name="option" class="entrada">
+                    <option value="">
+                    <option value="Dúvida do produto">Dúvida do produto</option>
+                    <option value="Atraso na entrega">Atraso na entrega</option>
+                </select>
+
+            </div>
+            <div>
+                <label for="mensagem"> Menssagem</label>
+                <textarea name="mensagem" id="mensagem" class="textarea" rows="7" placeholder="Sua mensagem"></textarea>
+            </div>
+            <div>
+                <button type="button" value="Enviar" class="button-forms">Enviar</button>
+            </div>
+        </form>
+
+    </section>
 
     <section class="content">
         <div class="font-bold period-width">
@@ -226,59 +263,17 @@
         </div>
     </section>
 
-    <section class="forms">
-        <div class="left-block">
-
-        </div>
-
-        <form action="POST">
-            <div>
-                <h2>Lorem</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quasi</p>
-            </div>
-
-            <div>
-                <label for="nome"> Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Nome completo">
-            </div>
-            <div>
-                <label for="email"> Email</label>
-                <input type="email" name="email" id="email" placeholder="E-mail">
-            </div>
-            <div>
-                <label for="option"> Assunto</label>
-                <select title="assunto" name="option" class="entrada">
-                    <option value="">
-                    <option value="Dúvida do produto">Dúvida do produto</option>
-                    <option value="Atraso na entrega">Atraso na entrega</option>
-                </select>
-
-            </div>
-            <div>
-                <label for="mensagem"> Menssagem</label>
-                <textarea name="mensagem" id="mensagem" class="textarea" rows="7" placeholder="Sua mensagem"></textarea>
-            </div>
-            <div>
-                <button type="button" value="Enviar" class="button-forms">Enviar</button>
-            </div>
-        </form>
-
-    </section>
-
-
-    
     <script>
+        //       n3 <- tresAlgorismos % 10;
+        //       aux <- tresAlgorismos / 10;
+        //       n2 <- aux % 10;
+        //       aux <- aux / 10;
+        //       n1 <- aux % 10;
+        //       aux =  n1 +  n2 * 2 +  n3 * 6 ;
+        //       n4 <- aux % 9;
+        //       quadtroAlgorismosD = tresAlgorismos * 10 + n4
 
-//       n3 <- tresAlgorismos % 10;
-//       aux <- tresAlgorismos / 10;
-//       n2 <- aux % 10;
-//       aux <- aux / 10;
-//       n1 <- aux % 10;
-//       aux =  n1 +  n2 * 2 +  n3 * 6 ;
-//       n4 <- aux % 9;
-//       quadtroAlgorismosD = tresAlgorismos * 10 + n4
-
-        const tresD = 324
+        const tresD = 127
 
         const n3 = tresD % 10
         console.log(`${n3} = n3`)
@@ -296,7 +291,6 @@
         console.log(`${n4} = n4`);
         const valorTotal = tresD * 10 + n4;
         console.log(valorTotal)
-
 
     </script>
 
